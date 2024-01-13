@@ -1,0 +1,68 @@
+﻿$(if http-status == 302)Hotspot login required$(endif)
+$(if http-header == "Location")$(link-redirect)$(endif)
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="img/favicon.ico" rel="shortcut icon">
+    <title>Login Hybrid.NET</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/poper.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-status text-center"><i class="fab fa-grav"></i></h5>
+            <h5 class="card-title text-center">Selamat Datang</h5>
+                    <p>Kode voucher anda $(username) selamat datang di layanan kami</p>
+                    <button class="btn btn-lg btn-info btn-block text-uppercase" onclick="window.location='http://loginhybrid.net/status.html';"><i class="fa fa-wifi"></i> Cek Status</button>
+                  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function getAndSetVal()
+    {
+        var txt1 = document.getElementById('inputUser').value;
+        document.getElementById('inputPassword').value = txt1;
+    }
+    // get value
+    function getVal()
+    {
+      var inputUser = document.getElementById('inputUser').value;
+      alert(inputUser);
+    }
+  </script>
+  $(if chap-id)
+  <script type="text/javascript" src="md5.js"></script>
+  <script type="text/javascript">
+      $('#loginForm').submit(function () {
+          var password = $('#inputPassword');
+          password.val(hexMD5('$(chap-id)' + password.val() + '$(chap-challenge)'));
+      });
+  </script>
+  $(endif)
+  <script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+  <script type="text/javascript">
+  <!--
+    document.login.username.focus();
+  //-->
+  </script>
+</body>
+</html>

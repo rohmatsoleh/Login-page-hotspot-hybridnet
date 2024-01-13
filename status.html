@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link href="img/logo.ico" rel="shortcut icon" />
+    <title>Status Hybridnet</title>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)" />
+    $(endif)
+
+    <script language="JavaScript">
+      function openLogout() {
+        if (window.name != "hotspot_status") return true;
+        open(
+          "$(link-logout)",
+          "hotspot_logout",
+          "toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250"
+        );
+        window.close();
+        return false;
+      }
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <h5 class="text-center mb-3 mt-2">STATUS INTERNET ANDA</h5>
+                    $(if login-by == 'trial')
+	<div style="margin-top:20px; text-align: center;"><h3>Selamat Datang</h3><i style="font-size:50px;" class="fa-solid fa-user"></i><br> <h3>trial user</h3></div><br>
+  $(elif login-by != 'mac')
+	<div style="margin-top:20px; text-align: center;"><img src="img/iklancctv.jpg" class="d-block w-100 img-fluid rounded border border-light" alt="..."> <br>  <i style="font-size:50px;" class="fa-solid fa-user"></i><br><br> <h3 id="user">$(username)</h3></div><br>
+  $(endif)
+                    <form class="myform" autocomplete="off" id="loginForm" role="form" action="$(link-login-only)" method="post">
+                          <div class="form-group mt-3">
+                          </div>
+
+                          <table class="table text-whitex">
+                            <thead>
+                              <tr class="table-info">
+                                <th scope="row">1</th>
+                                <td>IP Address : $(ip)</td>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="table-warning">
+                                <th scope="row">2</th>
+                                <td>MAC Address : $(mac)</td>
+                              </tr>
+                              <tr class="table-light">
+                                <th scope="row">3</th>
+                                <td>Masa Aktif : <div class="embed-responsive embed-responsive-16by9 text-white"><iframe class="embed-responsive-item" id="exp" frameborder="0" scrolling="no" src="about:blank"></iframe></div></td>
+                              </tr>
+                              <tr class="table-light">
+                                <th scope="row">4</th>
+                                <td>ISP : <span id="isp"></span></td>
+                              </tr>
+                              <tr class="table-light">
+                                <th scope="row">5</th>
+                                <td>IP Publik : <span id="ip"></span></td>
+                              </tr>
+                              <tr class="table-light">
+                                <th scope="row">6</th>
+                                <td>Kota : <span id="city"></span></td>
+                              </tr>
+                              <tr class="table-light">
+                                <th scope="row">7</th>
+                                <td>Provinsi : <span id="region"></span></td>
+                              </tr>
+                              <tr class="table-light">
+                                <th scope="row">8</th>
+                                <td>Negara : <span id="country"></span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    $(if login-by-mac != 'yes')
+<br>
+$(endif)
+<!--
+<script type="text/javascript">
+  document.getElementById('title').innerHTML = window.location.hostname + " > status";
+//get vaidity
+  var usr = document.getElementById('user').innerHTML 
+  var url = "http://149.129.248.23:49156/status/status.php?name="; // http://ip-server-mikhmon/mikhmonv2/status/status.php?name=
+  var SessionName = "hybridnet"
+  var getvalid = url+usr+"&session="+SessionName
+  document.getElementById('exp').src = getvalid;
+  doc.open();
+  doc.write('<style> body { color: white; } </style>');
+  doc.close();
+</script>
+-->
+
+<script type="text/javascript">
+  //get validity
+  var usr = document.getElementById("user").innerHTML;
+  var url = "http://192.168.100.1/hybridnet/status/status.php?name="; // http://ip-server-mikhmon/mikhmonv2/status/status.php?name=
+  var SessionName = "hybridnet";
+  var getvalid = url + usr + "&session=" + SessionName;
+  document.getElementById("exp").src = getvalid;
+  doc.open();
+  doc.write('<style> body { color: #000000; } </style>');
+  doc.close();
+</script>
+
+    <script>
+        function getAndSetVal() {
+          var txt1 = document.getElementById("inputUser").value;
+          document.getElementById("inputPassword").value = txt1;
+        }
+        // get value
+        function getVal() {
+          var inputUser = document.getElementById("inputUser").value;
+          alert(inputUser);
+        }
+      </script>
+      $(if chap-id)
+      <script type="text/javascript" src="md5.js"></script>
+      <script type="text/javascript">
+        $("#loginForm").submit(function () {
+          var password = $("#inputPassword");
+          password.val(
+            hexMD5("$(chap-id)" + password.val() + "$(chap-challenge)")
+          );
+        });
+      </script>
+      $(endif)
+      <script>
+        $("#menu-toggle").click(function (e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+      <script type="text/javascript">
+        document.login.username.focus();
+        //-->
+      </script>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("inputUser");
+          x.value = x.value.toLowerCase();
+        }
+      </script>
+      <script>
+        // Enable tooltips
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+          $(document).ready(function() {
+              $.getJSON("https://api.ipify.org?format=json", function(data) {
+                  $("#ip").text(data.ip);
+                  $.getJSON("https://ipapi.co/" + data.ip + "/json/", function(ipData) {
+                      $("#country").text(ipData.country_name);
+                      $("#region").text(ipData.region);
+                      $("#city").text(ipData.city);
+                      $("#isp").text(ipData.org);
+                  });
+              });
+          });
+      </script>
+  </body>
+</html>

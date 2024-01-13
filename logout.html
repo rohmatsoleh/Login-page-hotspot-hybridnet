@@ -1,0 +1,130 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Status Anda</title>
+    <link rel="icon" href="assets\img\favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jqueryslim.min.js"></script>
+    <script src="js/poper.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Hybrid Net </h1>
+                    <p>Anda sudah berhasil KELUAR di layanan Hybrid.Net</p>
+                  </div> <!-- .section-heading -->
+
+                    <table class="table">
+                      <tbody class="align-l">
+                        <tr>
+                          <td>Username</td>
+                          <td>$(username)</td>
+                        </tr>
+                        <tr>
+                          <td>IP Address</td>
+                          <td>$(ip)</td>
+                        </tr>
+                        <tr>
+                          <td>MAC Address</td>
+                          <td>$(mac)</td>
+                        </tr>
+                        $(if session-time-left)
+                        <tr>
+                          <td>Connected / left</td>
+                          <td>$(uptime) / $(session-time-left)</td>
+                        </tr>
+                        $(else)
+                        <tr>
+                          <td>Connected</td>
+                          <td>$(uptime)</td>
+                        </tr>
+                        $(endif)
+                        <tr>
+                          <td>Download / Upload</td>
+                          <td>$(bytes-out-nice) / $(bytes-in-nice)</td>
+                        </tr>
+                        $(if limit-bytes-total)
+                        <tr>
+                          <td>Sisa Kuota</td>
+                          <td>$(if limit-bytes-total) 
+                            <script language=javascript>result = ($(limit-bytes-total)/1000000).toFixed(2)
+                            document.write(result)</script> MiB
+                            $(endif)
+                            $(if limit-bytes-total == '')Unlimited$(endif)</td>
+                        </tr>
+                        $(else)
+                        <tr>
+                          <td>Sisa Kuota</td>
+                          <td>$(if limit-bytes-out) 
+                            <script language=javascript>result = ($(limit-bytes-out)/1000000).toFixed(2)
+                            document.write(result)</script> MiB
+                            $(endif)
+                            $(if limit-bytes-out == '')Unlimited$(endif)</td>
+                        </tr>
+                        $(endif)
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-p-l-1 m-t-60-xs-max">
+                <div class="col-inner clearfix">
+                  <img class="img-responsive float-r-sm-min m-x-auto-xs-max" src="assets\img\item\home.png" alt="" data-sr="right">
+                </div>
+              </div>
+            </div>
+          </div>
+  <script>
+    function getAndSetVal()
+    {
+        var txt1 = document.getElementById('inputUser').value;
+        document.getElementById('inputPassword').value = txt1;
+    }
+    // get value
+    function getVal()
+    {
+      var inputUser = document.getElementById('inputUser').value;
+      alert(inputUser);
+    }
+  </script>
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5c33568c280f3649d4f3f644/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  $(if chap-id)
+  <script type="text/javascript" src="md5.js"></script>
+  <script type="text/javascript">
+      $('#loginForm').submit(function () {
+          var password = $('#inputPassword');
+          password.val(hexMD5('$(chap-id)' + password.val() + '$(chap-challenge)'));
+      });
+  </script>
+  $(endif)
+  <script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+  <script type="text/javascript">
+  <!--
+    document.login.username.focus();
+  //-->
+  </script>
+</body>
+</html>

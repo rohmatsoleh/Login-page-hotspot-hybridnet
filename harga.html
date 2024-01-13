@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link href="img/logo.ico" rel="shortcut icon" />
+    <title>Harga Hybridnet</title>
+  </head>
+  <body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+        );
+        document.sendin.submit();
+        return false;
+      }
+      //-->
+    </script>
+    $(endif)
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <h5 class="text-center mb-3 mt-2">Harga Voucher</h5>
+                    <form class="myform" autocomplete="off" id="loginForm" role="form" action="$(link-login-only)" method="post">
+                          <div class="form-group mt-3">
+                          </div>
+
+                          <table class="table text-white">
+                            <thead>
+                              <tr>
+                                <th scope="col">Voucher</th>
+                                <th scope="col">Masa Aktif</th>
+                                <th scope="col">Harga</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Lite</td>
+                                <td>24 Jam</td>
+                                <td>Rp 5.000</td>
+                              </tr>
+                              <tr>
+                                <td>Max</td>
+                                <td>7 Hari </td>
+                                <td>Rp 20.000</td>
+                              </tr>
+                              <tr>
+                                <td>Pro</td>
+                                <td>30 Hari</td>
+                                <td>Rp 50.000</td>
+                              </tr>
+                              <tr>
+                                <td>Home</td>
+                                <td>30 Hari</td>
+                                <td>Rp 100.000 sampai Rp 180.000</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <a class="btn btn-block btn-primary btn-lg" href="login.html" role="button"><small><i class="fa-solid fa-backward pr-2"></i>Kembali Ke Halaman Login</small></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function getAndSetVal() {
+          var txt1 = document.getElementById("inputUser").value;
+          document.getElementById("inputPassword").value = txt1;
+        }
+        // get value
+        function getVal() {
+          var inputUser = document.getElementById("inputUser").value;
+          alert(inputUser);
+        }
+      </script>
+      $(if chap-id)
+      <script type="text/javascript" src="md5.js"></script>
+      <script type="text/javascript">
+        $("#loginForm").submit(function () {
+          var password = $("#inputPassword");
+          password.val(
+            hexMD5("$(chap-id)" + password.val() + "$(chap-challenge)")
+          );
+        });
+      </script>
+      $(endif)
+      <script>
+        $("#menu-toggle").click(function (e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+      <script type="text/javascript">
+        document.login.username.focus();
+        //-->
+      </script>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("inputUser");
+          x.value = x.value.toLowerCase();
+        }
+      </script>
+      <script>
+        // Enable tooltips
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      </script>
+  </body>
+</html>

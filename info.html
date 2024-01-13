@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link href="img/logo.ico" rel="shortcut icon" />
+    <title>Info Hybridnet</title>
+  </head>
+  <body>
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+      <input type="hidden" name="username" />
+      <input type="hidden" name="password" />
+      <input type="hidden" name="dst" value="$(link-orig)" />
+      <input type="hidden" name="popup" value="true" />
+    </form>
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+      function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5(
+          "$(chap-id)" + document.login.password.value + "$(chap-challenge)"
+        );
+        document.sendin.submit();
+        return false;
+      }
+      //-->
+    </script>
+    $(endif)
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card py-3 px-2">
+                    <h5 class="text-center mb-3 mt-2">Info</h5>
+                    <form class="myform" autocomplete="off" id="loginForm" role="form" action="$(link-login-only)" method="post">
+                          <div class="form-group mt-3">
+                          </div>
+
+                         <P>Pasang wi-fi di rumah Rp 1.700 per hari hanya untuk 2 orang tercepat, silahkan hubungi kami di WA 083130083000.
+                          <br>
+                          <br>
+                          Ingat kami menjual produk kami dengan murah bukan karena produk kami tidak berkualitas, kami telah hadir dari tahun 2016, dan telah banyak melakukan experimen jaringan, kami juga telah melakuakan peningkatan pada jaringan kami, mulai dari Upstrem untuk server kami yang memiliki 3 upstream, memiliki server sendiri di jakarta dan singapura untuk proses tunneling, dan mempunyai perangkat-perangkat jaringan yang berkualitas.
+                          <br>
+                          <br>
+                          Jadi tidak perlu diragukan lagi untuk kualitasnya.
+                          <br>
+                          <br>
+                          Ada yang bilang mending langganan indihome.
+                          <br>
+                          <br>
+                          Kami ingatkan lagi, di Tapos tidak ada yang namanya INDIHOME, kami kasih tau alasannya kalau itu bukan indihome.
+                          <br>
+                          <br>
+                          Mana ada Indihome numpang tiang PLN, Indihome mempunyai tiang sendiri seperti foto di bawah ini.
+                          <br>
+                          <br>
+                          <img src="img/tiang.jpg" class="img-fluid" alt="">
+                          <br>
+                          <br>
+                          Dan juga kabel fiber indihome lebih besar karena mempunyai core yang sangat banyak.
+                          <br>
+                          <br>
+                          Indihome tidak memakai HTB atau alat konvert dari fiber ke LAN seperti foto di bawah ini.
+                          <br>
+                          <br>
+                          <img src="img/htconvert.png" class="img-fluid" alt="">
+                          <br>
+                          <br>
+                          Untuk indohome dari kabel fiber langsung ke ONT(perangkat wi-fi milik indihome) seperti foto di bawah ini.
+                          <br>
+                          <br>
+                          <img src="img/ont-indi.png" class="img-fluid" alt="">
+                          <br>
+                          <br>
+                          Di tapos tidak pakai seperti itu.
+                          <br>
+                          <br>
+                          Untuk indohome pelanggan akan mempunyai id pelanggan, dan bisa di gunakan untuk login ke aplikasi my indihome, di tapos tidak seperti itu.
+                          <br>
+                          <br>
+                          Indihome bayar bisa online, seperti di shopee, tokopedia, bisa bayar di alfamart dan indomaret, dan bisa bayar di tempat-tempat yang bisa melakukan pembayaran, seperti di brilink di konter pulsa dll.
+                          tapi di tapos malah di tagih ke rumah masing masing.
+                          <br>
+                          <br>
+                          Jadi bisa di simpulakan itu bukan indihome.
+                          <br>
+                          Mending pakai wi-fi kami, ayo kita suport hasil karya anak kampung sendiri.
+                        </P>
+                          <a class="btn btn-block btn-primary btn-lg" href="login.html" role="button"><small><i class="fa-solid fa-backward pr-2"></i>Kembali Ke Halaman Login</small></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function getAndSetVal() {
+          var txt1 = document.getElementById("inputUser").value;
+          document.getElementById("inputPassword").value = txt1;
+        }
+        // get value
+        function getVal() {
+          var inputUser = document.getElementById("inputUser").value;
+          alert(inputUser);
+        }
+      </script>
+      $(if chap-id)
+      <script type="text/javascript" src="md5.js"></script>
+      <script type="text/javascript">
+        $("#loginForm").submit(function () {
+          var password = $("#inputPassword");
+          password.val(
+            hexMD5("$(chap-id)" + password.val() + "$(chap-challenge)")
+          );
+        });
+      </script>
+      $(endif)
+      <script>
+        $("#menu-toggle").click(function (e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+      <script type="text/javascript">
+        document.login.username.focus();
+        //-->
+      </script>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("inputUser");
+          x.value = x.value.toLowerCase();
+        }
+      </script>
+      <script>
+        // Enable tooltips
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      </script>
+  </body>
+</html>
